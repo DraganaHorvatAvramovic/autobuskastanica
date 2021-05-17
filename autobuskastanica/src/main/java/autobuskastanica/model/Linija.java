@@ -35,7 +35,7 @@ public class Linija {
 	@ManyToOne
 	private Prevoznik prevoznik;
 	
-	@OneToMany (mappedBy = "linija", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany (mappedBy = "linija")
 	private List<Rezervacija> rezervacije = new ArrayList<>();
 
 	public List<Rezervacija> getRezervacije() {

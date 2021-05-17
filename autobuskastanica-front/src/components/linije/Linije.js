@@ -65,6 +65,31 @@ class AutobuskaStanica extends React.Component {
        });
     }
 
+    deleteFromState(linijaId) {
+        var linije = this.state.linije;
+        linije.forEach((element, index) => {
+            if (element.id === linijaId) {
+                linije.splice(index, 1);
+                this.setState({linije: linije});
+            }
+        });
+    }
+
+    delete(linijaId){
+        AutobuskaStanicaAxios.delete('/linije/' + linijaId)
+        .then(res => {
+            // handle success
+            console.log(res);
+            alert('Linija je uspesno obrisana!');
+            this.deleteFromState(linijaId); // ili refresh page-a window.location.reload();
+        })
+        .catch(error => {
+            // handle error
+            console.log(error);
+            alert('Error occured please try again!');
+         });
+    }
+
     goToAdd(){
         this.props.history.push('/linije/add'); 
     }

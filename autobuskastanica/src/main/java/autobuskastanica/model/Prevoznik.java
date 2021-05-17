@@ -27,7 +27,7 @@ public class Prevoznik {
 	@Column(nullable = false, unique = true)
 	private String PIB;
 	
-	@OneToMany(mappedBy = "prevoznik", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "prevoznik")
 	private List<Linija> linije = new ArrayList<>();
 
 	public Prevoznik() {
